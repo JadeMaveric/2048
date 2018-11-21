@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class BlockSetup : MonoBehaviour {
-	public int width, height;
+	[Range(3,5)] public int width, height;
 
 	public GameObject background;
 
@@ -31,8 +31,8 @@ public class BlockSetup : MonoBehaviour {
 				placeholder[row,col].transform.position = bottom_left +  coord;
 
 				// Scale the block so that everything fits nicely
-				float background_size = Mathf.Min(background.transform.localScale.x, background.transform.localScale.y);
-				int stack_size = Mathf.Min(height, width);
+				float background_size = Mathf.Max(background.transform.localScale.x, background.transform.localScale.y);
+				int stack_size = Mathf.Max(height, width);
 				Vector2 size = new Vector2(
 					0.95f * background_size / stack_size,
 					0.95f * background_size / stack_size
